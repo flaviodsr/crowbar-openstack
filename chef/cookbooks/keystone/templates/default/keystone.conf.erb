@@ -9,6 +9,11 @@ transport_url = <%= @rabbit_settings[:url] %>
 [assignment]
 driver = <%= node[:keystone][:assignment][:driver] %>
 
+# This is explicitly disabling oath1 authentication method due to security
+# implications.
+[auth]
+methods = external,password,token,mapped
+
 [cache]
 backend = oslo_cache.memcache_pool
 enabled = True
